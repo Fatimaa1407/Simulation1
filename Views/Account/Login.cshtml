@@ -1,0 +1,22 @@
+﻿@using Simulation1.ViewModels
+@model LoginVM
+
+<div class="container" style="padding-top: 200px">
+    <div asp-validation-summary="All"></div>
+    <form asp-controller="Account" asp-action="Login" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div>
+        <p>Do not you have an account? <a asp-controller="Account" asp-action="Register">Register</a></p>
+    </div>
+</div>

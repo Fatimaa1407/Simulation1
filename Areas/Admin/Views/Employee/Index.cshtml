@@ -1,0 +1,60 @@
+﻿@using Simulation1.Models
+@model List<Employee>
+
+
+    
+<div>
+    <a class="btn btn-primary" asp-controller="Employee" asp-action="Create">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">FullName</th>
+                <th scope="col">Category</th>
+                <th scope="col">Image</th>
+                <th scope="col">Deleted Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Employee employee in Model)
+            {
+                <tr>
+                    <th scope="row">@employee.Id</th>
+                    <td>@employee.FullName</td>
+                    <td>@employee.Position.Name</td>
+                    <td>
+                        <img height="60px" width="60px" src="~/uploads/employees/@employee.ImageUrl" />
+                    </td>
+                    <td>
+                        @if (!employee.IsDeleted)
+                        {
+                            <span class="text-success">Active</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Inactive</span>
+                        }
+                    </td>
+                    <td>
+                        @if (!employee.IsDeleted)
+                        {
+                            <form asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-controller="Employee" asp-action="Restore" asp-route-id="@employee.Id">
+                                <button class="btn btn-success">Restore</button>
+                            </form>
+                        }
+                    </td>
+                    <td>
+                        <a asp-controller="Employee" asp-action="Update" asp-route-id="@employee.Id" class="btn btn-warning">Update</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

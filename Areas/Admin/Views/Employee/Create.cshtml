@@ -1,0 +1,32 @@
+﻿@using Simulation1.Areas.Admin.ViewModels.Employee
+@using Simulation1.Models
+@model CreateEmployeeVM
+
+<div>
+    <h2>Add employee</h2>
+    <form asp-controller="Employee" asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Position Name</label>
+            <input asp-for="FullName" type="text" class="form-control" id="name" placeholder="Enter name">
+            <span class="text-danger" asp-validation-for="FullName"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select asp-for="PositionId" class="form-control" id="exampleFormControlSelect1">
+                <option selected disabled>Select</option>
+                @foreach (Position position in ViewBag.Positions)
+                {
+                    <option value="@position.Id">@position.Name</option>
+                }
+            </select>
+            <span class="text-danger" asp-validation-for="PositionId"></span>
+              <div class="mb-3">
+            <label for="formFile" class="form-label">Select Image</label>
+            <input asp-for="ImageFile" class="form-control" type="file" id="formFile">
+            <span class="text-danger" asp-validation-for="ImageFile"></span>
+        </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
