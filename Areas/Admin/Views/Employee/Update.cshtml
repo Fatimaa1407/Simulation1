@@ -4,7 +4,7 @@
 
 <div>
     <h2>Update employee</h2>
-    <form asp-controller="Employee" asp-action="Update" method="post">
+    <form asp-controller="Employee" asp-action="Update" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Position Name</label>
             <input asp-for="FullName" type="text" class="form-control" id="name" placeholder="Enter name">

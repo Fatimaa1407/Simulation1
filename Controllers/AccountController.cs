@@ -84,11 +84,11 @@ namespace Simulation1.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //public async Task<IActionResult> CreateRoles()
-        //{
-        //    await _roleManager.CreateAsync(new IdentityRole("User"));
-        //    await _roleManager.CreateAsync(new IdentityRole("Admin"));
-        //    return View();
-        //}
+        public async Task<IActionResult> CreateRoles()
+        {
+            await _roleManager.CreateAsync(new IdentityRole("User"));
+            await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            return View();
+        }
     }
 }
